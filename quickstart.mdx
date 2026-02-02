@@ -1,80 +1,58 @@
 ---
 title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+description: "Create a workspace and start building in under 5 minutes"
 ---
 
-## Get started in three steps
+## Sign up
 
-Get your documentation site running locally and make your first customization.
+Go to [useagentos.com](https://useagentos.com) and create an account. You can sign in with your existing credentials through WorkOS.
 
-### Step 1: Set up your local environment
+## Create a workspace
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
+After signing in, you'll go through a short onboarding flow:
+
+<Steps>
+  <Step title="Name your project">
+    Enter a name for your company or project. This becomes your workspace.
+  </Step>
+  <Step title="Describe what you're building">
+    Tell AgentOS what you want to build. Be specific about the product, its features, and your goals. The Operator uses this context to plan work.
     
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
+    Alternatively, you can import an existing GitHub repository if you already have code.
+  </Step>
+  <Step title="Connect GitHub">
+    AgentOS needs access to GitHub to create repositories and open pull requests. You can provide:
+    - A personal access token (PAT) with `repo` scope
+    - Or configure a project-specific token later
     
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
+    <Note>
+      The `repo` scope gives agents permission to create repositories, push code, and manage pull requests.
+    </Note>
+  </Step>
+</Steps>
 
-### Step 2: Deploy your changes
+Once you complete onboarding, AgentOS creates your workspace and you're ready to go.
 
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+## Your first conversation
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+After setup, you land in the Operator tab. This is where you communicate with the AI.
 
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
+Try asking it something like:
 
-### Step 3: Go live
+- "What's the current state of my product?"
+- "Create a landing page for my app"
+- "Set up authentication with email and password"
 
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
+The Operator breaks down your request into tasks, assigns them to agents, and tracks progress. You can watch agents work in real-time from the Flow tab.
 
-## Next steps
+## Connect Vercel (optional)
 
-Now that you have your docs running, explore these key features:
+To enable automatic deployments, add your Vercel token in the workspace settings. Once connected, agents can deploy your code directly to Vercel.
+
+## What's next
 
 <CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
+  <Card title="How it works" icon="diagram-project" href="/concepts/how-it-works">
+    Learn about the Operator, agents, and how tasks flow through the system
+  </Card>
 </CardGroup>
-
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>

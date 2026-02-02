@@ -1,0 +1,60 @@
+---
+title: "How it works"
+description: "The Operator, agents, and task execution"
+---
+
+AgentOS has three main components: the Operator you talk to, the agents that execute work, and the workspace that tracks everything.
+
+## The Operator
+
+The Operator is your main point of contact. When you type a message, you're talking to the Operator.
+
+It can:
+
+- Answer questions about your product
+- Break down requests into specific tasks
+- Spin up agents to execute those tasks
+- Ask you clarifying questions when needed
+- Request confirmation before taking sensitive actions
+
+The Operator has access to tools that let it read your codebase, create tasks, and coordinate agents. Think of it as a project manager that understands code.
+
+## Agents
+
+When the Operator decides something needs to get built, it creates tasks and assigns them to agents. Each agent runs in an isolated environment with its own copy of your repository.
+
+Agents work autonomously. They clone your repo, make changes, and open pull requests. You can watch their progress in real-time from the Flow tab, which shows a graph of active agents and their current status.
+
+Multiple agents can work in parallel on different parts of your project. The system handles coordination so they don't step on each other's work.
+
+## Tasks and the Kanban board
+
+Every piece of work flows through a task system. You can see all tasks on the Kanban tab, organized into columns:
+
+- **Todo** - Tasks waiting to be picked up
+- **In Progress** - Tasks an agent is currently working on
+- **Done** - Completed tasks
+
+Tasks show who's assigned (agent, human, or both) and their current status. The board updates in real-time as agents complete work.
+
+## Questions and confirmations
+
+Sometimes agents need your input. They might ask:
+
+- Which authentication provider to use
+- Whether to proceed with a breaking change
+- Confirmation before running a destructive command
+
+These questions appear in your chat with the Operator. Answering them unblocks the agent so it can continue.
+
+## Usage limits
+
+AgentOS tracks token usage across all AI operations. Your monthly limit depends on your plan:
+
+| Plan | Monthly tokens |
+|------|----------------|
+| Free | 500,000 |
+| Pro | 2,000,000 |
+| Max | 20,000,000 |
+
+New accounts start with a 7-day trial. You can check your current usage in your workspace settings.
