@@ -7,7 +7,7 @@
     "light": "#F97316",
     "dark": "#C2410C"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/logo/agentos-transparent.png",
   "navigation": {
     "tabs": [
       {
@@ -40,8 +40,8 @@
     }
   },
   "logo": {
-    "light": "/logo/agentos.png",
-    "dark": "/logo/agentos.png"
+    "light": "/logo/agentos-transparent.png",
+    "dark": "/logo/agentos-transparent.png"
   },
   "navbar": {
     "links": [
