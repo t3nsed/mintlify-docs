@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "AgentOS",
   "colors": {
-    "primary": "#6366F1",
-    "light": "#818CF8",
-    "dark": "#4F46E5"
+    "primary": "#EA580C",
+    "light": "#F97316",
+    "dark": "#C2410C"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -58,13 +58,15 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/useagentos",
-      "github": "https://github.com/anomalyco"
+      "github": "https://github.com/actaso"
     }
   },
   "seo": {
     "metatags": {
       "canonical": "https://docs.useagentos.com"
     }
+  },
+  "contextual": {
+    "options": ["copy", "view", "chatgpt", "claude"]
   }
 }
