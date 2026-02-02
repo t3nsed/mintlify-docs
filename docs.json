@@ -41,7 +41,13 @@
   },
   "logo": {
     "light": "/logo/agentos-transparent.png",
-    "dark": "/logo/agentos-transparent.png"
+    "dark": "/logo/agentos-transparent.png",
+    "text": "AgentOS"
+  },
+  "fonts": {
+    "heading": {
+      "family": "Noto Serif"
+    }
   },
   "navbar": {
     "links": [
