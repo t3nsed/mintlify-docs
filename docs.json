@@ -61,5 +61,10 @@
       "x": "https://x.com/useagentos",
       "github": "https://github.com/anomalyco"
     }
+  },
+  "seo": {
+    "metatags": {
+      "canonical": "https://docs.useagentos.com"
+    }
   }
 }
