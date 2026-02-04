@@ -1,0 +1,95 @@
+---
+title: "CLI"
+description: "Control AgentOS from your terminal"
+---
+
+The AgentOS CLI lets you manage workspaces, talk to the Operator, and run macros from your terminal. Output is JSON by default, which makes it easy for scripts and AI agents to work with.
+
+## Install
+
+One command:
+
+```bash
+curl -fsSL https://useagentos.com/install.sh | bash
+```
+
+This downloads the right binary for your system and puts it in `~/.local/bin`. Works on macOS, Linux, and WSL.
+
+Check that it worked:
+
+```bash
+agentos health
+```
+
+You should see:
+
+```json
+{ "ok": true, "backendUrl": "https://api.useagentos.com" }
+```
+
+## Download manually
+
+If you'd rather grab the binary yourself, check the [GitHub releases](https://github.com/actaso/arche/releases). Pick the one for your system:
+
+| File                   | System                 |
+| ---------------------- | ---------------------- |
+| `agentos-darwin-arm64` | Mac with Apple Silicon |
+| `agentos-darwin-x64`   | Mac with Intel         |
+| `agentos-linux-arm64`  | Linux ARM              |
+| `agentos-linux-x64`    | Linux x64              |
+
+Then make it executable and move it somewhere in your PATH:
+
+```bash
+chmod +x agentos-darwin-arm64
+mv agentos-darwin-arm64 ~/.local/bin/agentos
+```
+
+## Log in
+
+You need an AgentOS account to use the CLI. If you don't have one, sign up at [useagentos.com](https://useagentos.com) first.
+
+```bash
+agentos auth login
+```
+
+This opens your browser. Sign in, approve the request, and you're done. The CLI stores your credentials locally.
+
+## Try it out
+
+List your workspaces:
+
+```bash
+agentos workspaces list
+```
+
+Talk to the Operator:
+
+```bash
+agentos operator chat ws_abc123 --message "What's the status of my project?"
+```
+
+Check available macros:
+
+```bash
+agentos macros list
+```
+
+## Output format
+
+Everything returns JSON. If you want it formatted for humans:
+
+```bash
+agentos workspaces list --output pretty
+```
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/cli/authentication">
+    Token storage, environment variables, and session management
+  </Card>
+  <Card title="Commands" icon="terminal" href="/cli/commands">
+    Full reference for all commands
+  </Card>
+</CardGroup>

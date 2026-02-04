@@ -1,0 +1,328 @@
+---
+title: "Commands"
+description: "Full reference for all CLI commands"
+---
+
+Every command outputs JSON by default, which makes scripting and automation straightforward. Add `--output pretty` if you want formatted output.
+
+## workspaces
+
+Manage your workspaces.
+
+### list
+
+List all workspaces you have access to.
+
+```bash
+agentos workspaces list
+```
+
+Optional: `--limit <n>` to cap the number of results.
+
+### get
+
+Get details about a specific workspace.
+
+```bash
+agentos workspaces get ws_abc123
+```
+
+Returns workspace metadata and the associated graph ID.
+
+### create
+
+Create a new workspace.
+
+```bash
+agentos workspaces create --name "My Project"
+```
+
+Options:
+
+- `--name <name>` (required): Workspace name
+- `--intent <intent>`: Initial prompt describing what you want to build
+
+---
+
+## operator
+
+Talk to the Operator AI and manage tasks.
+
+### chat
+
+Send a message to the Operator.
+
+```bash
+agentos operator chat ws_abc123 --message "Build me a landing page"
+```
+
+This returns a `requestId` you can use to stream the response.
+
+Options:
+
+- `--message <message>` (required): What you want to tell the Operator
+- `--context <context>`: Either `product` or `distribution`
+
+### chat-stream
+
+Stream the Operator's response.
+
+```bash
+agentos operator chat-stream ws_abc123 --request-id req_xyz --follow
+```
+
+Options:
+
+- `--request-id <id>` (required): From the chat command
+- `--follow`: Keep streaming until the response completes (otherwise returns first batch)
+
+### tasks
+
+List tasks the Operator created.
+
+```bash
+agentos operator tasks ws_abc123
+```
+
+Options:
+
+- `--graph-id <id>`: Filter by a specific graph
+
+### task-update
+
+Update a task's status.
+
+```bash
+agentos operator task-update task_123 --status done
+```
+
+Valid statuses: `todo`, `in_progress`, `awaiting_human_feedback`, `done`
+
+---
+
+## macros
+
+Pre-built workflows for common tasks. Think of these as recipes the Operator knows how to run.
+
+### list
+
+See what's available.
+
+```bash
+agentos macros list
+```
+
+### get
+
+Get details about a specific macro.
+
+```bash
+agentos macros get funding
+```
+
+### run
+
+Run a macro in a workspace.
+
+```bash
+agentos macros run funding ws_abc123
+```
+
+Currently available:
+
+- **funding**: Helps identify funding options based on your product stage
+
+More macros are coming.
+
+---
+
+## questions
+
+When the Operator needs your input, it creates a question. These commands let you see and answer them.
+
+### list
+
+List questions for a workspace.
+
+```bash
+agentos questions list ws_abc123
+```
+
+Options:
+
+- `--status <status>`: Filter by `pending` or `answered`
+
+### answer
+
+Respond to a question.
+
+```bash
+agentos questions answer q_123 --answer "Use TypeScript"
+```
+
+Or pick from predefined options:
+
+```bash
+agentos questions answer q_123 --option "Option A"
+```
+
+---
+
+## skills
+
+Skills are capabilities the Operator can use, like posting to LinkedIn or creating Notion pages.
+
+### list
+
+See all available skills.
+
+```bash
+agentos skills list
+```
+
+### search
+
+Find skills by keyword.
+
+```bash
+agentos skills search "social media"
+```
+
+Options:
+
+- `--limit <n>`: Max results (default: 10)
+
+### get
+
+Get details about how a skill works.
+
+```bash
+agentos skills get linkedin
+```
+
+---
+
+## tools
+
+Tools are the low-level actions skills use. You probably won't call these directly, but you can inspect them.
+
+### list
+
+List all available tools.
+
+```bash
+agentos tools list
+```
+
+### get
+
+Get a tool's schema and requirements.
+
+```bash
+agentos tools get notion_create_page
+```
+
+---
+
+## integrations
+
+Manage connections to external services.
+
+### list
+
+See your connected integrations.
+
+```bash
+agentos integrations list
+```
+
+### skills list
+
+List skill-specific integrations (credentials you've saved for skills).
+
+```bash
+agentos integrations skills list
+```
+
+### skills get
+
+Check a specific skill integration.
+
+```bash
+agentos integrations skills get spotify
+```
+
+### skills set
+
+Configure credentials for a skill.
+
+```bash
+agentos integrations skills set spotify --credentials '{"apiKey":"your-key"}'
+```
+
+The credentials argument takes JSON.
+
+### skills delete
+
+Remove a skill integration.
+
+```bash
+agentos integrations skills delete spotify
+```
+
+---
+
+## user
+
+Info about your account.
+
+### profile
+
+Get your user profile.
+
+```bash
+agentos user profile
+```
+
+### processes
+
+See what's currently running.
+
+```bash
+agentos user processes
+```
+
+---
+
+## config
+
+Manage CLI settings.
+
+### show
+
+See your current configuration, including what's set via environment variables.
+
+```bash
+agentos config show
+```
+
+### set
+
+Change configuration values.
+
+```bash
+agentos config set --backend-url https://api.custom.com
+agentos config set --default-workspace ws_abc123
+```
+
+---
+
+## health
+
+Check if the CLI can reach the backend.
+
+```bash
+agentos health
+```
+
+Returns `{ "ok": true, "backendUrl": "..." }` if everything's working.

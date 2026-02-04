@@ -1,0 +1,91 @@
+---
+title: "Authentication"
+description: "How login works and where credentials are stored"
+---
+
+The CLI uses the same authentication as the web app. When you run `agentos auth login`, your browser opens to complete the OAuth flow, then the CLI stores the token locally.
+
+## Logging in
+
+```bash
+agentos auth login
+```
+
+This prints a URL and opens your browser. Sign in with your AgentOS account (Google, GitHub, or email). After you approve, the browser shows a confirmation and the CLI saves your credentials.
+
+Takes about 10 seconds.
+
+## Where credentials live
+
+Tokens are stored in `~/.config/agentos/credentials.json` with mode 0600 (only you can read it).
+
+```json
+{
+  "accessToken": "eyJ...",
+  "expiresAt": 1706832000000
+}
+```
+
+The CLI refreshes expired tokens automatically when it can. If your session is too old, you'll need to log in again.
+
+## Check your status
+
+See if you're logged in:
+
+```bash
+agentos auth status
+```
+
+```json
+{
+  "authenticated": true,
+  "user": {
+    "id": "usr_abc123",
+    "email": "you@example.com"
+  },
+  "expiresAt": 1706832000000
+}
+```
+
+## Log out
+
+```bash
+agentos auth logout
+```
+
+This deletes the credentials file.
+
+## Environment variables
+
+You can override authentication with environment variables. Useful for CI/CD or automated scripts.
+
+| Variable              | Purpose                                                              |
+| --------------------- | -------------------------------------------------------------------- |
+| `AGENTOS_TOKEN`       | Use this token instead of the stored one                             |
+| `AGENTOS_API_KEY`     | Authenticate with an API key                                         |
+| `AGENTOS_BACKEND_URL` | Point to a different backend (default: `https://api.useagentos.com`) |
+| `AGENTOS_WORKSPACE`   | Default workspace ID for commands that need one                      |
+
+Example:
+
+```bash
+AGENTOS_TOKEN=your_token agentos workspaces list
+```
+
+## Command flags
+
+Every command accepts these flags:
+
+| Flag                  | Purpose                                     |
+| --------------------- | ------------------------------------------- |
+| `--token <token>`     | Override auth token for this command        |
+| `--api-key <key>`     | Use API key authentication                  |
+| `--backend-url <url>` | Override backend URL                        |
+| `--workspace <id>`    | Set default workspace                       |
+| `--output <format>`   | Output format: `json` (default) or `pretty` |
+
+The `--output pretty` flag makes JSON easier to read in a terminal:
+
+```bash
+agentos workspaces list --output pretty
+```
