@@ -15,16 +15,15 @@
         "groups": [
           {
             "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart"
-            ]
+            "pages": ["index", "quickstart"]
           },
           {
             "group": "Core concepts",
-            "pages": [
-              "concepts/how-it-works"
-            ]
+            "pages": ["concepts/how-it-works"]
+          },
+          {
+            "group": "CLI",
+            "pages": ["cli/overview", "cli/authentication", "cli/commands"]
           }
         ]
       }
