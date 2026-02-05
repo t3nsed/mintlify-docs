@@ -294,6 +294,32 @@ agentos user processes
 
 ---
 
+## billing
+
+Check your plan and token budget.
+
+### status
+
+See your current plan, subscription status, and how many tokens you've used.
+
+```bash
+agentos billing status
+```
+
+Returns your plan name, status, and budget with token limit, used count, and remaining balance.
+
+### portal
+
+Get a link to the billing portal where you can manage your subscription.
+
+```bash
+agentos billing portal
+```
+
+Returns a `customerPortalUrl` you can open in your browser to upgrade, downgrade, or update payment details.
+
+---
+
 ## config
 
 Manage CLI settings.
